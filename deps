@@ -75,3 +75,12 @@
 [Stof-DoctrineExtensionsBundle]
    git=https://github.com/stof/StofDoctrineExtensionsBundle.git
    target=/bundles/Stof/DoctrineExtensionsBundle
+
+[WixetBundle]
+   git=https://github.com/maxpowel/WixetBundle.git
+   target=../src/Wixet/WixetBundle
+
+[UserInterfaceBundle]
+   git=https://github.com/maxpowel/UserInterfaceBundle.git
+   target=../src/Wixet/UserInterfaceBundle
+

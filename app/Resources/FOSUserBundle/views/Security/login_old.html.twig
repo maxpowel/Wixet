@@ -1,0 +1,77 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+
+
+ <div align="center">
+         
+        { % image '@UserInterfaceBundle/Resources/public/images/logoportada.png'
+        output='images/logo.png'
+        % }
+        <img src="{{ asset_url }}" />
+        { % endimage % }
+ </div>
+    <br />
+	<table align="center" height="100%">
+
+		<tr>
+			<td width="30%"></td>
+		<td>
+			<div class="portlet-centro ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+				<div class="portlet-header-centro ui-widget-header ui-corner-all" align="center">Entrar</div>
+				<div class="portlet-content">
+					<div>
+						<form action="{{ path("fos_user_security_check") }}" method="post">
+							<table>
+								{% if error %}
+									<tr><td colspan="2"><div class="ui-state-error ui-corner-all">{{ 'login.error'|trans({}, 'UserInterfaceBundle') }}</div></td></tr>
+								{% endif %}
+									<tr>
+										<td>{{ 'security.login.username'|trans({}, 'FOSUserBundle') }} </td><td><input type="text" class="ui-corner-all" name="_username" value="{{ last_username }}"></td>
+
+									</tr>
+									<tr>
+										<td>{{ 'security.login.password'|trans({}, 'FOSUserBundle') }} </td><td><input type="password" class="ui-corner-all" name="_password"></td>
+									</tr>
+									<tr>
+										<td colspan="2"><input type="checkbox" id="remember_me" name="_remember_me" value="on" />{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</td>
+									</tr>
+
+									<tr>
+										<td align="center" colspan="2"><br><input type="submit" id="submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" /></td>
+									</tr>	
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+		</td>
+			<td width="30%"></td>
+		</tr>
+		<tr>
+
+		<td width="30%"></td>
+		<td>
+			<div align="center" class="portlet-content ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+				<table>
+					<tr>
+						<td>
+							<a id="but-passwordRecovery" style="text-decoration: none;" href="resetting/request">Recuperar contrase&ntilde;a</a>
+						</td>
+
+						<td>
+							<span class="icon ui-icon ui-icon-grip-solid-vertical"></span>
+						</td>
+						<td>
+							<a id="but-createAccount" style="text-decoration: none;" href="register/">Quiero una cuenta</a>
+						</td>
+					</tr>
+				</table>
+
+			</div>
+		</td>
+		<td width="30%"></td>
+		</tr>
+	</table>	
+{% endblock fos_user_content %}

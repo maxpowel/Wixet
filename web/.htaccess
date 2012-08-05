@@ -1,0 +1,9 @@
+
+#ProxyPass /http-bind/ http://localhost:5280/http-bind/
+#RewriteRule http-bind/ http://localhost:5280/http-bind/ [P] 
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ app.php [QSA,L]
+</IfModule>

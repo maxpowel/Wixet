@@ -1,0 +1,66 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        {% stylesheets '@UserInterfaceBundle/Resources/public/css/*'
+                       '@UserInterfaceBundle/Resources/public/css/ui-lightness/*'
+        output='css/main.css'
+        filter='?yui_css'
+        %}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        
+        
+        {% javascripts '@UserInterfaceBundle/Resources/public/js/jquery/jquery-1.6.2.min.js'
+                       '@UserInterfaceBundle/Resources/public/js/jquery/jquery-ui-1.8.16.custom.min.js'
+                       '@UserInterfaceBundle/Resources/public/js/login/login.js'
+        output='js/main.js'
+        filter='?yui_js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        
+        <title>{% block title %}Wixet{% endblock %}</title>
+        
+
+        
+        {% image '@UserInterfaceBundle/Resources/public/images/favicon.ico'
+        output='images/favicon.ico'
+        %}
+        <link rel="shortcut icon" href="{{ asset_url }}" />
+        {% endimage %}
+        
+        
+        
+    </head>
+    <body>
+
+		{% for key, message in app.session.getFlashes() %}
+        <div class="{{ key }}">
+            {{ message|trans({}, 'FOSUserBundle') }}
+        </div>
+        {% endfor %}
+
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+            
+        
+        
+        <div class="footer">
+			<div align="center">Esta p&aacute;gina esta optimizada para ser usada con Mozilla Firefox o Google Chrome. Los navegadores que no respetan los estandares web (como internet explorer) sufrir&aacute;n problemas de visualizaci&oacute;n</div>
+			<br />
+			<div align="center">
+				<a href="http://www.mozilla-europe.org/es/firefox/" title="Descargar Mozilla Firefox">
+					<img src="http://www.difundefirefox.com/files/banners/110_32-ff2.png" alt="Mozilla Firefox" style="border: 0pt none ;" />
+				</a>
+				&nbsp;
+				<a href="http://www.google.es/chrome">
+					<img class="listaFotos ui-state-default ui-corner-all" alt="Google Chrome" src="/images/logo_sm.jpg" />
+				</a>
+			</div>
+		</div>    
+    </body>
+</html>

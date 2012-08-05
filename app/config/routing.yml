@@ -1,0 +1,62 @@
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal
+
+# app/config/routing.yml
+
+
+main:
+    resource: "@UserInterfaceBundle/Controller/MainController.php"
+    type:     annotation
+    
+photo:
+    resource: "@UserInterfaceBundle/Controller/PhotoController.php"
+    type:     annotation
+    
+multimedia:
+    resource: "@UserInterfaceBundle/Controller/MultimediaController.php"
+    type:     annotation
+
+privateMessage:
+    resource: "@UserInterfaceBundle/Controller/PrivateMessageController.php"
+    type:     annotation
+
+autocomplete:
+    resource: "@UserInterfaceBundle/Controller/AutocompleteController.php"
+    type:     annotation
+        
+search:
+    resource: "@UserInterfaceBundle/Controller/SearchController.php"
+    type:     annotation    
+    
+account:
+    resource: "@UserInterfaceBundle/Controller/AccountController.php"
+    type:     annotation
+    
+permission:
+    resource: "@UserInterfaceBundle/Controller/PermissionController.php"
+    type:     annotation
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+#fos_user_profile:
+#    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+#    prefix: /profile
+
+#fos_user_register:
+#    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+#    prefix: /register
+
+#fos_user_resetting:
+#    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+#    prefix: /resetting
+
+#fos_user_change_password:
+#    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+#    prefix: /change-password
+
+#fos_user_group:
+#    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+#    prefix: /group

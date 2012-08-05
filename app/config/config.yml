@@ -1,0 +1,108 @@
+imports:
+    - { resource: parameters.ini }
+    - { resource: security.yml }
+
+framework:
+    #esi:             ~
+    #translator:      { fallback: %locale% }
+    secret:          %secret%
+    charset:         UTF-8
+    router:          { resource: "%kernel.root_dir%/config/routing.yml" }
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    session:
+        default_locale: %locale%
+        auto_start:     true
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    # java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        # closure:
+        #     jar: %kernel.root_dir%/java/compiler.jar
+        # yui_css:
+        #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: %mailer_transport%
+    host:      %mailer_host%
+    username:  %mailer_user%
+    password:  %mailer_password%
+
+#jms_security_extra:
+#    secure_controllers:  true
+#    secure_all_services: false
+#    
+    
+    
+# fos user
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Wixet\WixetBundle\Entity\User
+    group:
+        group_class: Wixet\WixetBundle\Entity\Group
+        
+#doctrine extensions
+stof_doctrine_extensions:
+    #default_locale: es_ES
+    orm:
+        default:
+            timestampable: true
+            loggable: true
+#            translatable: false
+#            tree: false
+#            sluggable: false
+
+
+wixet:
+    #cache:
+    #    expirationTime: 3600
+    classes:
+        #people_fetcher: Wixet\WixetBundle\Fetcher\DoctrinePeopleFetcher
+        group: Wixet\WixetBundle\Entity\ProfileGroup
+        profile: Wixet\WixetBundle\Entity\UserProfile
+        itemContainer: Wixet\WixetBundle\Entity\ItemContainer
+    mediaItem:
+        file_directory: /home/alvaro/wixet_workspace/Prueba/mediaItemFiles
+        #Thumbnail: what you see in multimedia
+        thumbnail_max_size: [100, 100]
+        #What you see in section photo
+        preview_max_size: [450, 450]
+        #Image that appears whe user comment o something (square)
+        profile_max_size: 50
+        #Image that appears whe user comment o something (square)
+        public_profile_max_size: [170,150]
+
+        
+services:
+    event.listener:
+        class: Wixet\WixetBundle\Entity\Event
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }

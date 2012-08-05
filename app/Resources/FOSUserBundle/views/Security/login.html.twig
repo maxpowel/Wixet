@@ -1,0 +1,43 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+<style>
+img {
+	padding: 60px
+}
+.tinySelect {
+    margin: 1px;
+    width: 70px;
+}
+</style>
+	<div align="center" id="content" class="container-fluid">
+	        {% image '@UserInterfaceBundle/Resources/public/img/logo.png'
+        	output='img/logo.png'
+        %}
+        <img src="{{ asset_url }}">
+        {% endimage %}
+        
+	      
+	      <div id="section">
+		      
+			</div>
+	</div>
+		
+{% if error %}
+	<input type="hidden" id="loginError" value="1">
+{% endif %}
+
+{% javascripts '@UserInterfaceBundle/Resources/public/login/login.js'
+               '@UserInterfaceBundle/Resources/public/login/LoginApp.js'
+               '@UserInterfaceBundle/Resources/public/login/LoginView.js'
+               '@UserInterfaceBundle/Resources/public/login/NewAccountView.js'
+               '@UserInterfaceBundle/Resources/public/login/UserAuthentication.js'
+               '@UserInterfaceBundle/Resources/public/login/UserRegistration.js'
+       	 	output='js/login.js'
+        %}
+        
+                              
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        
+{% endblock fos_user_content %}
